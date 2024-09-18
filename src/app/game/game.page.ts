@@ -109,6 +109,10 @@ export class GamePage implements OnInit, OnDestroy {
   async levelUp() {
     this.level++;
     this.correctAnswersInARow = 0;
+    // Limpar o temporizador atual
+  this.clearTimer();
+  // Reiniciar o temporizador com 30 segundos adicionais
+  this.timeLeft = 100 + 30; // Adiciona 30 segundos extras
 
     // Exibir o modal para parabenizar o jogador
     const modal = await this.modalController.create({
@@ -123,6 +127,7 @@ export class GamePage implements OnInit, OnDestroy {
     // Continuar com o próximo nível após fechar o modal
     modal.onDidDismiss().then(() => {
       this.loadNewQuestion(this.level);
+      this.startTimer(); // Reinicia o temporizador após o modal ser fechado
     });
   }
 }
