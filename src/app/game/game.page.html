@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Jogo de Matemática</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Exibir a pontuação e o nível do usuário -->
+  <h3>Pontuação: {{ score }}</h3>
+  <h3>Nível: {{ level }}</h3>
+
+  <!-- Exibir o temporizador -->
+  <h3>Tempo Restante: {{ timeLeft }} segundos</h3>
+
+  <!-- Exibir mensagem de fim de jogo -->
+  <div *ngIf="isGameOver">
+    <h2>Fim de jogo! Sua pontuação foi: {{ score }}</h2>
+    <ion-button (click)="startGame()">Jogar Novamente</ion-button>
+  </div>
+
+  <!-- Pergunta de matemática (exibir apenas se o jogo não acabou) -->
+  <div *ngIf="!isGameOver">
+    <h2>{{ currentQuestion?.question }}</h2>
+  
+    <!-- Opções de resposta -->
+    <ion-list>
+      <ion-item *ngFor="let option of currentQuestion?.options"
+                [ngClass]="{
+                  'correct': showCorrectAnswer && option === correctAnswer,
+                  'wrong': showCorrectAnswer && option === selectedAnswer && option !== correctAnswer
+                }"
+                (click)="selectAnswer(option)">
+        {{ option }}
+      </ion-item>
+    </ion-list>
+
+    <!-- Mensagem de feedback -->
+    <div *ngIf="message">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</ion-content>
