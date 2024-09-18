@@ -45,10 +45,31 @@ export class GamePage implements OnInit, OnDestroy {
 
   resetGame() {
     this.score = 0;
-    this.timeLeft = 100;
+    // this.timeLeft = 100;
     this.isGameOver = false;
-    this.level = 1;
     this.correctAnswersInARow = 0;
+
+    if (this.getStorage()) {
+      this.level = parseInt(this.getStorage() as any);
+      this.timeLeft = this.getLevel(this.level)
+      return
+    }
+    this.level = 1
+    
+  }
+
+  // setup?/
+  getLevel(level: number){
+    let res: number
+    if(level === 1 || level === undefined) {
+      this.timeLeft == 100
+      return res = this.timeLeft
+    }
+    return res = level * 100
+  }
+
+  getStorage(){
+    return window.localStorage.getItem('level')
   }
 
   startTimer() {
@@ -108,11 +129,12 @@ export class GamePage implements OnInit, OnDestroy {
 
   async levelUp() {
     this.level++;
+   window.localStorage.setItem('level', this.level as any)
     this.correctAnswersInARow = 0;
     // Limpar o temporizador atual
   this.clearTimer();
   // Reiniciar o temporizador com 30 segundos adicionais
-  this.timeLeft = 100 + 30; // Adiciona 30 segundos extras
+  this.timeLeft = this.getLevel(this.level); // Adiciona 30 segundos extras
 
     // Exibir o modal para parabenizar o jogador
     const modal = await this.modalController.create({
