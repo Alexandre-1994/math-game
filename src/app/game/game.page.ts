@@ -1,53 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MathQuestionsService } from '../services/math-questions.service';
+import { ModalController } from '@ionic/angular';
+import { LevelUpModalComponent } from '../level-up-modal/level-up-modal.component';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.page.html',
   styleUrls: ['./game.page.scss'],
 })
-export class GamePage implements OnInit {
+export class GamePage implements OnInit, OnDestroy {
 
   currentQuestion: any;
-  selectedAnswer: number = 0;
-  correctAnswer!: number; 
+  selectedAnswer: number | undefined;
+  correctAnswer: number | undefined;
   message: string | undefined;
-  score: number = 0; 
-  showCorrectAnswer: boolean = false; 
+  score: number = 0;
+  showCorrectAnswer: boolean = false;
 
-
- 
   // Variáveis para o temporizador
-  timeLeft: number = 300; // Tempo inicial para cada partida (em segundos)
+  timeLeft: number = 100;
   interval: any;
   isGameOver: boolean = false;
 
+  // Variáveis para controle de nível e respostas corretas consecutivas
   level: number = 1;
-  correctAnswersInARow: number = 0; 
-  maxCorrectAnswers: number = 8; // Quantidade de respostas consecutivas para avançar de nível
+  correctAnswersInARow: number = 0;
+  maxCorrectAnswers: number = 8;
 
-
-
-  constructor(private mathService: MathQuestionsService) { }
+  constructor(private mathService: MathQuestionsService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.startGame();
   }
+
   ngOnDestroy() {
-    this.clearTimer(); // Limpa o intervalo quando a página é destruída
+    this.clearTimer();
   }
+
   startGame() {
-     this.resetGame();
-    this.loadNewQuestion(this.level); // Inicia no nível atual
+    this.resetGame();
+    this.loadNewQuestion(this.level);
     this.startTimer();
   }
+
   resetGame() {
     this.score = 0;
-    this.timeLeft = 30;
+    this.timeLeft = 100;
     this.isGameOver = false;
     this.level = 1;
     this.correctAnswersInARow = 0;
   }
+
   startTimer() {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
@@ -76,7 +79,7 @@ export class GamePage implements OnInit {
   }
 
   selectAnswer(option: number) {
-    if (this.isGameOver) return; // Não permite respostas após o tempo acabar
+    if (this.isGameOver) return;
 
     this.selectedAnswer = option;
     this.correctAnswer = this.currentQuestion.correctAnswer;
@@ -84,30 +87,42 @@ export class GamePage implements OnInit {
     if (this.selectedAnswer === this.correctAnswer) {
       this.message = 'Correto!';
       this.score++;
-      this.correctAnswersInARow++; // Aumenta contagem de respostas corretas consecutivas
+      this.correctAnswersInARow++;
 
-      // Verifica se o jogador atingiu o número necessário para avançar de nível
       if (this.correctAnswersInARow >= this.maxCorrectAnswers) {
         this.levelUp();
+      } else {
+        setTimeout(() => {
+          this.loadNewQuestion(this.level);
+        }, 1000);
       }
-
-      setTimeout(() => {
-        this.loadNewQuestion(this.level); // Carrega a próxima pergunta no nível atual
-      }, 1000);
     } else {
       this.message = 'Errado!';
       this.showCorrectAnswer = true;
-      this.correctAnswersInARow = 0; // Reseta contagem de respostas corretas consecutivas
+      this.correctAnswersInARow = 0;
       setTimeout(() => {
         this.loadNewQuestion(this.level);
       }, 2000);
     }
   }
 
-  levelUp() {
-    this.level++; // Aumenta o nível
-    this.correctAnswersInARow = 0; // Reseta contagem de respostas corretas consecutivas
-    this.message = `Parabéns! Você avançou para o nível ${this.level}.`;
-    // Aqui você pode aumentar a dificuldade das perguntas, por exemplo
+  async levelUp() {
+    this.level++;
+    this.correctAnswersInARow = 0;
+
+    // Exibir o modal para parabenizar o jogador
+    const modal = await this.modalController.create({
+      component: LevelUpModalComponent, // Este é o componente modal que vamos criar
+      componentProps: {
+        level: this.level
+      }
+    });
+
+    await modal.present();
+    
+    // Continuar com o próximo nível após fechar o modal
+    modal.onDidDismiss().then(() => {
+      this.loadNewQuestion(this.level);
+    });
   }
 }
