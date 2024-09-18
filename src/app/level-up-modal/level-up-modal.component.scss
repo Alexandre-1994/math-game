@@ -1,0 +1,41 @@
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  ion-button {
+    --border-radius: 20px;
+    --background: linear-gradient(45deg, #007bff, #00d4ff);
+    --box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    font-size: 18px;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  ion-button:hover {
+    --background: linear-gradient(45deg, #00d4ff, #007bff);
+  }
+  
+  ion-content {
+    --background: #f8f9fa;
+  }
+  

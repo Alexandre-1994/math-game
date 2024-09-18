@@ -25,3 +25,54 @@
 #container a {
   text-decoration: none;
 }
+
+/* Centraliza o conteúdo da página */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f0f4f7;
+}
+
+/* Estilo do texto de boas-vindas */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilo do botão Iniciar */
+ion-button {
+  --border-radius: 20px;
+  --background: linear-gradient(45deg, #007bff, #00d4ff);
+  --box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.4);
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Efeito hover para o botão */
+ion-button:hover {
+  --background: linear-gradient(45deg, #00d4ff, #007bff);
+}
+
+/* Adiciona um efeito de transição suave ao botão */
+ion-button {
+  transition: all 0.3s ease;
+}
+
+/* Estilo opcional do ion-content para maior responsividade */
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+}
