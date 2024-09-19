@@ -10,4 +10,87 @@
     font-size: 24px;
     font-weight: bold;
   }
+  .status-bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .status-item {
+    font-weight: bold;
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  .question-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .question-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  ion-list {
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    --background: #f0f0f0;
+    --border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  ion-item:hover {
+    --background: #e9ecef;
+  }
+  
+  /* Estilo para as respostas corretas e incorretas */
+  .correct {
+    background-color: #28a745;
+    color: white;
+    --border-radius: 10px;
+  }
+  
+  .wrong {
+    background-color: #dc3545;
+    color: white;
+    --border-radius: 10px;
+  }
+  
+  .game-over-container {
+    text-align: center;
+  }
+  
+  .game-over-container h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #17a2b8;
+    margin-top: 15px;
+  }
+  
+  ion-button {
+    --border-radius: 10px;
+    --background: linear-gradient(45deg, #007bff, #00d4ff);
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
   

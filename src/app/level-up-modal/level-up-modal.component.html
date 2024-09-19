@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nível {{ level }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="modal-content">
+    <h2>Parabéns!</h2>
+    <p>Você avançou para o nível {{ level }}!</p>
+
+    <ion-button expand="full" (click)="closeModal()">Continuar</ion-button>
+  </div>
+</ion-content>

@@ -19,11 +19,11 @@ export class MathQuestionsService {
         break;
       case 2: // Médio
         num1 = this.getRandomInt(10, 100);
-        num2 = this.getRandomInt(10, 100);
+        num2 = this.getRandomInt(1, 10);
         break;
       case 3: // Difícil
-        num1 = this.getRandomInt(100, 1000);
-        num2 = this.getRandomInt(100, 1000);
+        num1 = this.getRandomInt(10, 1000);
+        num2 = this.getRandomInt(1, 100);
         break;
       default:
         num1 = this.getRandomInt(1, 10);
