@@ -9,8 +9,14 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(private router: Router) {}
-  startGame() {
-    // Navega para a página do jogo
-    this.router.navigate(['/game']);
+ // Método para selecionar o tipo de jogo
+ selectGame(gameType: string) {
+  console.log(`Game selected: ${gameType}`); // Verifica se o tipo de jogo é recebido corretamente
+  if (gameType === 'math') {
+    this.router.navigate(['/game'], { queryParams: { mode: 'math' } });
+  } else if (gameType === 'logic') {
+    this.router.navigate(['/logic-game'], { queryParams: { mode: 'logic' } });
   }
+}
+
 }

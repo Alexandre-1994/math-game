@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'game',
     loadChildren: () => import('./game/game.module').then( m => m.GamePageModule)
   },
+  {
+    path: 'logic-game',
+    loadChildren: () => import('./logic-game/logic-game.module').then( m => m.LogicGamePageModule)
+  },
 ];
 
 @NgModule({

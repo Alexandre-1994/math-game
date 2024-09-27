@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Jogo de Lógica</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="status-bar">
+    <div class="status-item">Pontuação: {{ score }}</div>
+    <div class="status-item">Nível: {{ level }}</div>
+    <div class="status-item">Respostas corretas seguidas: {{ correctAnswersInARow }}/10</div>
+  </div>
+
+  <div *ngIf="!isGameStarted && !isGameOver" class="start-screen">
+    <h2>Bem-vindo ao Jogo de Lógica!</h2>
+    <ion-button expand="block" color="primary" (click)="startGame()">Iniciar Jogo</ion-button>
+    
+    <h3>Selecione um nível:</h3>
+    <ion-button *ngFor="let level of unlockedLevels" 
+                [color]="level === this.level ? 'primary' : 'medium'"
+                (click)="changeLevel(level)">
+      Nível {{ level }}
+    </ion-button>
+  </div>
+
+  <div *ngIf="isGameOver" class="game-over-container">
+    <h2>{{ message }}</h2>
+    <ion-button expand="block" color="primary" (click)="startGame()">Jogar Novamente</ion-button>
+  </div>
+
+  <div *ngIf="isGameStarted && !isGameOver && currentQuestion" class="question-container">
+    <h2>{{ currentQuestion.pergunta }}</h2>
+    <ion-list>
+      <ion-item *ngFor="let option of currentQuestion.opcoes" (click)="selectAnswer(option)">
+        {{ option }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="feedbackMessage" class="feedback-message">
+    <p>{{ feedbackMessage }}</p>
+  </div>
+
+  <div *ngIf="message" class="level-up-message">
+    <p>{{ message }}</p>
+  </div>
+
+  <ion-button *ngIf="isGameStarted && !isGameOver" expand="full" (click)="toggleGame()">
+    {{ isGamePaused ? 'Retomar' : 'Pausar' }}
+  </ion-button>
+</ion-content>

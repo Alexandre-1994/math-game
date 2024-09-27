@@ -1,14 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Bem-vindo ao Jogo de Matemática!
-    </ion-title>
+    <ion-title>Escolha o Jogo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="home-container">
-    <h2>Pronto para o desafio?</h2>
-    <ion-button expand="block" color="primary" (click)="startGame()">Iniciar</ion-button>
+  <div class="game-selection">
+    <ion-button (click)="selectGame('math')">Jogo de Matemática</ion-button>
+<ion-button (click)="selectGame('logic')">Jogo de Lógica</ion-button>
+
   </div>
 </ion-content>

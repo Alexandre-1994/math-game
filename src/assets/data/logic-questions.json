@@ -1,0 +1,279 @@
+{
+  "niveis": [
+    {
+      "nivel": 1,
+      "perguntas": [
+        {
+          "pergunta": "Se todos os cães são mamíferos e Rex é um cão, Rex é um mamífero?",
+          "opcoes": ["Sim", "Não"],
+          "respostaCorreta": "Sim"
+        },
+        {
+          "pergunta": "Maria tem 3 filhos. O primeiro é Pedro, o segundo é João. Qual é o nome do terceiro filho?",
+          "opcoes": ["Carlos", "Maria", "Lucas"],
+          "respostaCorreta": "Maria"
+        },
+        {
+          "pergunta": "Se 2 + 2 é igual a 4, o que é 2 + 2?",
+          "opcoes": ["4", "22", "5"],
+          "respostaCorreta": "4"
+        },
+        {
+          "pergunta": "Se o céu é azul, a cor do céu é azul?",
+          "opcoes": ["Sim", "Não"],
+          "respostaCorreta": "Sim"
+        },
+        {
+          "pergunta": "Quantos meses têm 28 dias?",
+          "opcoes": ["1", "12", "0"],
+          "respostaCorreta": "12"
+        },
+        {
+          "pergunta": "Se você tem 5 maçãs e dá 2 para um amigo, quantas maçãs você ainda tem?",
+          "opcoes": ["3", "2", "5"],
+          "respostaCorreta": "3"
+        },
+        {
+          "pergunta": "O que é maior, um elefante ou uma formiga?",
+          "opcoes": ["Elefante", "Formiga"],
+          "respostaCorreta": "Elefante"
+        },
+        {
+          "pergunta": "Se o sol nasce no leste, onde o sol se põe?",
+          "opcoes": ["Oeste", "Leste", "Sul"],
+          "respostaCorreta": "Oeste"
+        },
+        {
+          "pergunta": "Um gato tem 4 patas. Quantas patas têm 2 gatos?",
+          "opcoes": ["8", "4", "6"],
+          "respostaCorreta": "8"
+        },
+        {
+          "pergunta": "Se você tem um copo e adiciona 1 litro de água, quanto você tem?",
+          "opcoes": ["1 litro", "2 litros", "1 copo"],
+          "respostaCorreta": "1 litro"
+        }
+      ]
+    },
+    {
+      "nivel": 2,
+      "perguntas": [
+        {
+          "pergunta": "Se todos os pássaros podem voar, mas algumas aves não podem, todos os pássaros são aves?",
+          "opcoes": ["Sim", "Não"],
+          "respostaCorreta": "Sim"
+        },
+        {
+          "pergunta": "Quantos animais de cada espécie Moisés colocou na arca?",
+          "opcoes": ["2", "4", "Nenhum"],
+          "respostaCorreta": "Nenhum"
+        },
+        {
+          "pergunta": "Se um carro viaja a 60 km/h, quantos quilômetros ele percorre em 2 horas?",
+          "opcoes": ["120 km", "100 km", "80 km"],
+          "respostaCorreta": "120 km"
+        },
+        {
+          "pergunta": "Qual é a capital da França?",
+          "opcoes": ["Paris", "Londres", "Berlim"],
+          "respostaCorreta": "Paris"
+        },
+        {
+          "pergunta": "Se você tem um peixe em um aquário e ele nada, onde ele está?",
+          "opcoes": ["Na água", "Na terra", "No céu"],
+          "respostaCorreta": "Na água"
+        },
+        {
+          "pergunta": "Se você tem um amigo e ele também tem um amigo, quantos amigos você tem?",
+          "opcoes": ["1", "2", "3"],
+          "respostaCorreta": "2"
+        },
+        {
+          "pergunta": "Se um relógio marca 3 horas e você espera 2 horas, que horas serão?",
+          "opcoes": ["5 horas", "4 horas", "6 horas"],
+          "respostaCorreta": "5 horas"
+        },
+        {
+          "pergunta": "Se você corta uma maçã ao meio, quantas metades você tem?",
+          "opcoes": ["1", "2", "3"],
+          "respostaCorreta": "2"
+        },
+        {
+          "pergunta": "Se um lápis custa R$ 1 e você compra 5 lápis, quanto você gastou?",
+          "opcoes": ["R$ 5", "R$ 6", "R$ 4"],
+          "respostaCorreta": "R$ 5"
+        },
+        {
+          "pergunta": "Qual é o dia seguinte a sexta-feira?",
+          "opcoes": ["Sábado", "Domingo", "Quinta"],
+          "respostaCorreta": "Sábado"
+        }
+      ]
+    },
+    {
+      "nivel": 3,
+      "perguntas": [
+        {
+          "pergunta": "Em uma sala há 5 pessoas. Cada uma aperta a mão de todas as outras. Quantos apertos de mão ocorreram?",
+          "opcoes": ["10", "8", "5"],
+          "respostaCorreta": "10"
+        },
+        {
+          "pergunta": "João corre mais rápido que Pedro. Pedro corre mais rápido que Maria. Quem corre mais rápido?",
+          "opcoes": ["João", "Pedro", "Maria"],
+          "respostaCorreta": "João"
+        },
+        {
+          "pergunta": "Se você tem 10 maçãs e come 3, quantas maçãs sobram?",
+          "opcoes": ["7", "6", "8"],
+          "respostaCorreta": "7"
+        },
+        {
+          "pergunta": "Qual é a soma dos ângulos internos de um triângulo?",
+          "opcoes": ["90 graus", "180 graus", "360 graus"],
+          "respostaCorreta": "180 graus"
+        },
+        {
+          "pergunta": "Se uma lâmpada acende em 1 segundo e apaga em 2 segundos, quanto tempo leva para acender novamente?",
+          "opcoes": ["1 segundo", "2 segundos", "3 segundos"],
+          "respostaCorreta": "2 segundos"
+        },
+        {
+          "pergunta": "Se você tem 3 amigos e cada um dá 1 presente, quantos presentes você tem?",
+          "opcoes": ["3", "2", "1"],
+          "respostaCorreta": "3"
+        },
+        {
+          "pergunta": "Se um ônibus parte de uma cidade a 60 km/h, quantos quilômetros ele percorre em 1 hora?",
+          "opcoes": ["60 km", "50 km", "70 km"],
+          "respostaCorreta": "60 km"
+        },
+        {
+          "pergunta": "Qual é o quadrado de 3?",
+          "opcoes": ["6", "9", "12"],
+          "respostaCorreta": "9"
+        },
+        {
+          "pergunta": "Se você tem 4 pares de sapatos, quantos sapatos você tem?",
+          "opcoes": ["4", "8", "2"],
+          "respostaCorreta": "8"
+        },
+        {
+          "pergunta": "Se um triângulo tem lados de 3 cm, 4 cm e 5 cm, é um triângulo retângulo?",
+          "opcoes": ["Sim", "Não"],
+          "respostaCorreta": "Sim"
+        }
+      ]
+    },
+    {
+      "nivel": 4,
+      "perguntas": [
+        {
+          "pergunta": "Se hoje é segunda-feira e daqui a 100 dias será sexta-feira, que dia da semana será daqui a 365 dias?",
+          "opcoes": ["Domingo", "Sábado", "Segunda-feira"],
+          "respostaCorreta": "Domingo"
+        },
+        {
+          "pergunta": "Se um trem percorre 200 km em 2 horas, quanto tempo levará para percorrer 600 km?",
+          "opcoes": ["6 horas", "4 horas", "3 horas"],
+          "respostaCorreta": "6 horas"
+        },
+        {
+          "pergunta": "Qual é a raiz quadrada de 144?",
+          "opcoes": ["10", "11", "12"],
+          "respostaCorreta": "12"
+        },
+        {
+          "pergunta": "Se um carro consome 10 litros de combustível para 100 km, quantos litros consome para 300 km?",
+          "opcoes": ["20 litros", "30 litros", "40 litros"],
+          "respostaCorreta": "30 litros"
+        },
+        {
+          "pergunta": "Se um homem tem 40 anos e seu filho tem 20, qual é a soma das idades deles?",
+          "opcoes": ["40", "60", "80"],
+          "respostaCorreta": "60"
+        },
+        {
+          "pergunta": "Se uma pizza é cortada em 8 fatias e você come 3, quantas fatias restam?",
+          "opcoes": ["5", "4", "6"],
+          "respostaCorreta": "5"
+        },
+        {
+          "pergunta": "Qual é a distância em quilômetros entre duas cidades se um carro viaja a 80 km/h por 2 horas?",
+          "opcoes": ["160 km", "200 km", "120 km"],
+          "respostaCorreta": "160 km"
+        },
+        {
+          "pergunta": "Qual é a soma de 5 + 10 + 15?",
+          "opcoes": ["25", "30", "20"],
+          "respostaCorreta": "30"
+        },
+        {
+          "pergunta": "Se você tem 6 balas e dá 2 para um amigo, quantas balas você tem?",
+          "opcoes": ["4", "6", "2"],
+          "respostaCorreta": "4"
+        },
+        {
+          "pergunta": "Se você somar 1 a 100, qual é o resultado?",
+          "opcoes": ["101", "100", "99"],
+          "respostaCorreta": "101"
+        }
+      ]
+    },
+    {
+      "nivel": 5,
+      "perguntas": [
+        {
+          "pergunta": "Dois pais e dois filhos foram pescar. Todos pescaram um peixe, mas no total foram pescados apenas três peixes. Como isso é possível?",
+          "opcoes": ["Estavam em barcos diferentes", "Havia três pessoas", "Alguém não pescou"],
+          "respostaCorreta": "Havia três pessoas"
+        },
+        {
+          "pergunta": "Uma corrida de 100 metros acontece entre 5 corredores. Quantas posições diferentes podem ser ocupadas no pódio?",
+          "opcoes": ["15", "60", "120"],
+          "respostaCorreta": "120"
+        },
+        {
+          "pergunta": "Se você colocar uma folha de papel em uma balança e a folha pesa 10g, quanto pesa a folha com mais 10 folhas?",
+          "opcoes": ["10g", "100g", "20g"],
+          "respostaCorreta": "110g"
+        },
+        {
+          "pergunta": "Se você tem 3 maçãs e alguém te dá mais 3, quantas maçãs você tem no total?",
+          "opcoes": ["6", "3", "5"],
+          "respostaCorreta": "6"
+        },
+        {
+          "pergunta": "Qual é a soma dos números de 1 a 100?",
+          "opcoes": ["5050", "5000", "5100"],
+          "respostaCorreta": "5050"
+        },
+        {
+          "pergunta": "Se uma caixa contém 100 bolas, e você retira 20, quantas bolas restam?",
+          "opcoes": ["80", "20", "100"],
+          "respostaCorreta": "80"
+        },
+        {
+          "pergunta": "Se você somar todos os números de 1 a 10, qual é o resultado?",
+          "opcoes": ["55", "60", "50"],
+          "respostaCorreta": "55"
+        },
+        {
+          "pergunta": "Se um trem parte de uma estação a 100 km/h, quanto tempo leva para percorrer 300 km?",
+          "opcoes": ["2 horas", "3 horas", "4 horas"],
+          "respostaCorreta": "3 horas"
+        },
+        {
+          "pergunta": "Qual é a área de um quadrado com lado de 4 cm?",
+          "opcoes": ["16 cm²", "12 cm²", "8 cm²"],
+          "respostaCorreta": "16 cm²"
+        },
+        {
+          "pergunta": "Se você juntar 50 centavos com 50 centavos, quanto você tem?",
+          "opcoes": ["1 real", "50 centavos", "1,50 real"],
+          "respostaCorreta": "1 real"
+        }
+      ]
+    }
+  ]
+}
