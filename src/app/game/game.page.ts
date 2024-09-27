@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MathQuestionsService } from '../services/math-questions.service';
 import { ModalController } from '@ionic/angular';
 import { LevelUpModalComponent } from '../level-up-modal/level-up-modal.component';
-
+import { SummaryModalComponentComponent } from '../summary-modal-component/summary-modal-component.component';
 @Component({
   selector: 'app-game',
   templateUrl: './game.page.html',
@@ -21,7 +21,9 @@ export class GamePage implements OnInit, OnDestroy {
   isGameStarted: boolean = false;
   isGamePaused: boolean = false;
   maxQuestions: number = 10; // Número máximo de perguntas por nível
-
+  totalQuestions: number = 0; // Contador total de perguntas jogadas
+  totalCorrectAnswers: number = 0; // Contador total de respostas corretas
+  accuracyPercentage: number = 0; 
   // Variáveis para o temporizador
   timeLeft: number = 100;
   interval: any;
@@ -108,27 +110,34 @@ export class GamePage implements OnInit, OnDestroy {
 
   selectAnswer(option: number) {
     if (this.isGameOver) return;
-
+  
     this.selectedAnswer = option;
     this.correctAnswer = this.currentQuestion.correctAnswer;
-
+  
+    // Incrementa o contador total de perguntas
+    this.totalQuestions++;
+  
     if (this.selectedAnswer === this.correctAnswer) {
       this.message = 'Correto!';
       this.score++;
       this.correctAnswersInARow++;
+      this.totalCorrectAnswers++; // Incrementa o contador de acertos
     } else {
       this.message = 'Errado!';
       this.showCorrectAnswer = true;
       this.correctAnswersInARow = 0;
-      this.incorrectAnswers++; // Incrementa o contador de erros
-
+      this.incorrectAnswers++;
+  
       // Verifica se o jogador errou metade das perguntas
       if (this.incorrectAnswers >= Math.floor(this.maxQuestions / 2)) {
-        this.endGame(); // Chama o método para terminar o jogo
+        this.endGame();
         return; // Sai do método
       }
     }
-
+  
+    // Atualiza a porcentagem de acertos
+    this.accuracyPercentage = (this.totalCorrectAnswers / this.totalQuestions) * 100;
+  
     // Lógica para avançar para a próxima pergunta
     if (this.correctAnswersInARow >= this.maxCorrectAnswers) {
       this.levelUp();
@@ -200,9 +209,20 @@ export class GamePage implements OnInit, OnDestroy {
     }
   }
 
-  endGame() {
+  
+  async endGame() {
     this.isGameOver = true;
     this.clearTimer();
-    this.message = 'Você perdeu! Tente novamente.'; // Mensagem de fim de jogo
+  
+    const modal = await this.modalController.create({
+      component: SummaryModalComponentComponent, // Usar o nome correto
+      componentProps: {
+        totalQuestions: this.totalQuestions,
+        totalCorrectAnswers: this.totalCorrectAnswers,
+        accuracyPercentage: this.accuracyPercentage,
+      }
+    });
+  
+    await modal.present();
   }
 }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LevelUpModalComponent } from './level-up-modal/level-up-modal.component';
 
+import { SummaryModalComponentComponent } from './summary-modal-component/summary-modal-component.component';
 @NgModule({
   declarations: [AppComponent,  LevelUpModalComponent],
   imports: [
