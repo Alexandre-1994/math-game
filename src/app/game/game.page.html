@@ -5,9 +5,17 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  <div *ngFor="let lvl of [1, 2, 3, 4, 5]">
+    <button [disabled]="!unlockedLevels.includes(lvl)" (click)="selectLevel(lvl)">
+      Nível {{ lvl }} 
+    </button>
+  </div>
+
   <!-- Barra de status que exibe pontuação, nível e temporizador -->
   <div class="status-bar">
     <div class="status-item">Pontuação: {{ score }}</div>
+    <h3>Número de Erros: {{ incorrectAnswers }}</h3> <!-- Atualize para incorrectAnswers -->
     <div class="status-item">Nível: {{ level }}</div>
     <div class="status-item">Tempo Restante: {{ timeLeft }}s</div>
   </div>
@@ -39,4 +47,8 @@
       <p>{{ message }}</p>
     </div>
   </div>
+
+  <ion-button *ngIf="!isGameOver" expand="full" (click)="toggleGame()">
+    {{ isGamePaused ? 'Retomar' : isGameStarted ? 'Pausar' : 'Iniciar Jogo' }}
+  </ion-button>
 </ion-content>

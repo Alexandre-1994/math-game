@@ -6,49 +6,115 @@ import { Injectable } from '@angular/core';
 export class MathQuestionsService {
 
   constructor() { }
-  // Método para gerar uma pergunta aleatória
-  generateQuestion(level: number): any {
-    const operations = ['+', '-', '*', '/'];
-    const operation = operations[Math.floor(Math.random() * operations.length)];
-    
-    let num1, num2;
+
+  // Método para gerar uma pergunta aleatória com base no nível
+  generateQuestion(level: number) {
+    let question, options, correctAnswer;
+  
     switch (level) {
-      case 1: // Fácil
-        num1 = this.getRandomInt(1, 10);
-        num2 = this.getRandomInt(1, 10);
+      case 1: // Nível Fácil
+        ({ question, options, correctAnswer } = this.generateBasicOperation());
         break;
-      case 2: // Médio
-        num1 = this.getRandomInt(10, 100);
-        num2 = this.getRandomInt(1, 10);
+  
+      case 2: // Nível Médio
+        ({ question, options, correctAnswer } = this.generateComplexOperation());
         break;
-      case 3: // Difícil
-        num1 = this.getRandomInt(10, 1000);
-        num2 = this.getRandomInt(1, 100);
+  
+      case 3: // Nível Difícil
+        ({ question, options, correctAnswer } = this.generateFractionOrDecimal());
         break;
-      default:
-        num1 = this.getRandomInt(1, 10);
-        num2 = this.getRandomInt(1, 10);
+  
+      case 4: // Nível Avançado - Álgebra Simples
+        ({ question, options, correctAnswer } = this.generateAlgebraEquation());
+        break;
+  
+      case 5: // Nível Avançado - Equações Quadráticas
+        ({ question, options, correctAnswer } = this.generateQuadraticEquation());
+        break;
+  
+      default: // Padrão
+        ({ question, options, correctAnswer } = this.generateBasicOperation());
     }
-
-    // Certifique-se de que não há divisão por zero
-    if (operation === '/' && num2 === 0) {
-      num2 = 1;
-    }
-
+  
+    return { question, options, correctAnswer };
+  }
+  
+  // Funções para gerar perguntas
+  generateBasicOperation() {
+    const num1 = this.getRandomInt(1, 10);
+    const num2 = this.getRandomInt(1, 10);
+    const operation = ['+', '-', '*', '/'][this.getRandomInt(0, 3)];
+  
     const question = `${num1} ${operation} ${num2}`;
-    const correctAnswer = eval(question); // Calcula a resposta correta
-
-    // Gera opções de respostas
+    const correctAnswer = eval(question); // Calcula o resultado correto
     const options = this.generateOptions(correctAnswer);
+    
+    return { question, options, correctAnswer };
+  }
+  
+  generateComplexOperation() {
+    const num1 = this.getRandomInt(10, 100);
+    const num2 = this.getRandomInt(10, 100);
+    const num3 = this.getRandomInt(1, 10);
+    const question = `(${num1} + ${num2}) * ${num3}`;
+    const correctAnswer = eval(question);
+    const options = this.generateOptions(correctAnswer);
+    
+    return { question, options, correctAnswer };
+  }
+  
+  generateFractionOrDecimal() {
+    const num1 = this.getRandomFloat(1, 10);
+    const num2 = this.getRandomFloat(1, 10);
+    const question = `${num1.toFixed(1)} + ${num2.toFixed(1)}`;
+    const correctAnswer = parseFloat((num1 + num2).toFixed(1));
+    const options = this.generateOptions(correctAnswer);
+    
+    return { question, options, correctAnswer };
+  }
+  
+  generateAlgebraEquation() {
+    const x = this.getRandomInt(1, 10);
+    const question = `x + 5 = ${x + 5}, solve for x`;
+    const correctAnswer = x;
+    const options = this.generateOptions(correctAnswer);
+  
+    return { question, options, correctAnswer };
+  }
+  
+  generateQuadraticEquation(): { question: string; options?: number[]; correctAnswer?: number | null } {
+    const a = this.getRandomInt(1, 5);
+    const b = this.getRandomInt(1, 10);
+    const c = this.getRandomInt(1, 10);
+    const question = `Solve for x: ${a}x^2 + ${b}x + ${c} = 0`;
+    const correctAnswer = this.solveQuadratic(a, b, c); // Implementar método para resolver equação quadrática
+ 
 
-    return { question, correctAnswer, options };
+if (correctAnswer !== null) {
+  const options = this.generateOptions(correctAnswer);
+  return { question, options, correctAnswer };
+} else {
+  // Tratar o caso onde não há uma resposta correta, como nenhuma opção disponível
+  return { question, options: [], correctAnswer: null };
+}
+  
   }
 
-  // Método auxiliar para gerar um número aleatório entre dois valores
-  getRandomInt(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  // Função para resolver equações quadráticas
+  solveQuadratic(a: number, b: number, c: number): number | null {
+    const discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) {
+      // Nenhuma solução real, retorna null
+      return null;
+    }
+  
+    const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+  
+    // Retornar uma das soluções (ou poderia modificar para retornar um array com ambas)
+    return x1; // ou x2
   }
-
+  
   // Método para gerar opções de resposta (uma correta e outras incorretas)
   generateOptions(correctAnswer: number): number[] {
     const options = [correctAnswer];
@@ -68,5 +134,14 @@ export class MathQuestionsService {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  // Método auxiliar para gerar um número aleatório entre dois valores
+  getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getRandomFloat(min: number, max: number): number {
+    return (Math.random() * (max - min)) + min;
   }
 }
